@@ -1,0 +1,18 @@
+# Discord Rules (including voice/stream server IPs)
+# Source: timmistM/mikrotik-rules
+# Voice IPs are critical — without them Discord streams have no audio
+
+payload:
+  # ── Domains ─────────────────────────────────────────────────
+  - DOMAIN-SUFFIX,discord.com
+  - DOMAIN-SUFFIX,discord.gg
+  - DOMAIN-SUFFIX,discordapp.com
+  - DOMAIN-SUFFIX,discordapp.net
+  - DOMAIN-SUFFIX,discord.media
+  - DOMAIN-SUFFIX,discordcdn.com
+  - DOMAIN-SUFFIX,engage.cloudflareclient.com
+
+  # ── Voice / Stream server IPs ───────────────────────────────
+  - IP-CIDR,35.214.128.0/24,no-resolve
+  - IP-CIDR,104.29.153.0/24,no-resolve
+  - IP-CIDR,34.1.242.0/24,no-resolve

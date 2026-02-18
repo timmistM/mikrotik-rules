@@ -1,0 +1,21 @@
+# Gaming Rules (Roblox, Unity, ARVI Playtests)
+# Source: timmistM/mikrotik-rules
+
+payload:
+  # ── Roblox ──────────────────────────────────────────────────
+  - DOMAIN-SUFFIX,roblox.com
+  - DOMAIN-SUFFIX,rbxcdn.com
+
+  # ── Unity Remote Config ─────────────────────────────────────
+  - IP-CIDR,34.111.113.40/32,no-resolve
+  - IP-CIDR,34.107.172.168/32,no-resolve
+  - IP-CIDR,35.205.92.229/32,no-resolve
+  - IP-CIDR,34.107.202.109/32,no-resolve
+
+  # ── ARVI Playtests ──────────────────────────────────────────
+  - DOMAIN-SUFFIX,arvilab.com
+  - IP-CIDR,51.79.81.103/32,no-resolve
+  - IP-CIDR,51.83.140.72/32,no-resolve
+  - IP-CIDR,152.228.227.152/32,no-resolve
+  - IP-CIDR,145.239.206.228/32,no-resolve
+  - IP-CIDR,51.89.20.0/24,no-resolve

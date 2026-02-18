@@ -1,0 +1,65 @@
+# AI Services Rules
+# Source: timmistM/mikrotik-rules
+# Used by: Clash Verge clients (rule-provider) + MikroTik sync script
+# Update: add new AI service domains/IPs here — all clients pick up automatically
+
+payload:
+  # ── Claude / Anthropic ──────────────────────────────────────
+  - DOMAIN-SUFFIX,claude.ai
+  - DOMAIN-SUFFIX,anthropic.com
+  - DOMAIN-SUFFIX,claude.com
+  - DOMAIN-SUFFIX,claudeusercontent.com
+  - DOMAIN-SUFFIX,claudemcpclient.com
+  # Anthropic own network (AS399358)
+  - IP-CIDR,160.79.104.0/23,no-resolve
+  - IP-CIDR,209.249.57.0/24,no-resolve
+  - IP-CIDR6,2607:6bc0::/48,no-resolve
+  # Anthropic on Google Cloud
+  - IP-CIDR,34.36.57.103/32,no-resolve
+  - IP-CIDR,34.54.194.141/32,no-resolve
+  # Anthropic legacy GCP
+  - IP-CIDR,34.162.46.92/32,no-resolve
+  - IP-CIDR,34.162.102.82/32,no-resolve
+  - IP-CIDR,34.162.136.91/32,no-resolve
+  - IP-CIDR,34.162.142.92/32,no-resolve
+  - IP-CIDR,34.162.183.95/32,no-resolve
+  # Amazon CloudFront (Intercom / CDN)
+  - IP-CIDR,18.97.36.0/24,no-resolve
+  # Amazon AWS EC2 (Intercom backend)
+  - IP-CIDR,44.209.175.254/32,no-resolve
+  - IP-CIDR,52.70.56.162/32,no-resolve
+
+  # ── OpenAI / ChatGPT ───────────────────────────────────────
+  - DOMAIN-SUFFIX,openai.com
+  - DOMAIN-SUFFIX,chatgpt.com
+  - DOMAIN-SUFFIX,oaiusercontent.com
+  - DOMAIN-SUFFIX,oaistatic.com
+  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+
+  # ── Google AI (Gemini, DeepMind, NotebookLM, AI Studio) ────
+  - DOMAIN-SUFFIX,gemini.google.com
+  - DOMAIN-SUFFIX,aistudio.google.com
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com
+  - DOMAIN-SUFFIX,deepmind.google
+  - DOMAIN-SUFFIX,deepmind.com
+  - DOMAIN-SUFFIX,notebooklm.google.com
+  - DOMAIN-SUFFIX,notebooklm.google
+  - DOMAIN-SUFFIX,ai.google
+
+  # ── Grok / xAI ─────────────────────────────────────────────
+  - DOMAIN-SUFFIX,grok.com
+  - DOMAIN-SUFFIX,x.ai
+  - DOMAIN-SUFFIX,grok.x.ai
+  - DOMAIN-SUFFIX,grokusercontent.com
+  - DOMAIN-SUFFIX,grokipedia.com
+
+  # ── Perplexity ──────────────────────────────────────────────
+  - DOMAIN-SUFFIX,perplexity.ai
+  - DOMAIN-SUFFIX,pplx.ai
+
+  # ── Runway ML ───────────────────────────────────────────────
+  - DOMAIN-SUFFIX,runwayml.com
+
+  # ── Intercom (used by Claude/Anthropic support) ─────────────
+  - DOMAIN-SUFFIX,intercom.io
+  - DOMAIN-SUFFIX,intercomcdn.com

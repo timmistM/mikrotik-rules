@@ -1,0 +1,27 @@
+# Other Services Rules
+# Source: timmistM/mikrotik-rules
+# Services that don't warrant their own file
+
+payload:
+  # ── RuTracker ───────────────────────────────────────────────
+  - DOMAIN-SUFFIX,rutracker.org
+  - DOMAIN-SUFFIX,rutracker.net
+  - DOMAIN-SUFFIX,rutracker.cc
+
+  # ── RustDesk ────────────────────────────────────────────────
+  - DOMAIN-SUFFIX,rustdesk.com
+  - DOMAIN-SUFFIX,vultrusercontent.com
+  - DOMAIN-SUFFIX,vps.ovh.net
+  - IP-CIDR,57.128.218.35/32,no-resolve
+  - IP-CIDR,209.250.254.15/32,no-resolve
+
+  # ── ProtonVPN ───────────────────────────────────────────────
+  - IP-CIDR,18.195.146.77/32,no-resolve
+  - IP-CIDR,185.159.159.148/32,no-resolve
+  - IP-CIDR,3.68.216.156/32,no-resolve
+
+  # ── UPGEN SVN ───────────────────────────────────────────────
+  - IP-CIDR,135.125.163.217/32,no-resolve
+
+  # ── Soundcore ───────────────────────────────────────────────
+  - DOMAIN-SUFFIX,soundcore.com
