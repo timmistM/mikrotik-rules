@@ -53,6 +53,9 @@ payload:
   - DOMAIN-SUFFIX,grokusercontent.com
   - DOMAIN-SUFFIX,grokipedia.com
 
+  # ── Ideogram ─────────────────────────────────────────────
+  - DOMAIN-SUFFIX,ideogram.ai
+
   # ── Perplexity ──────────────────────────────────────────────
   - DOMAIN-SUFFIX,perplexity.ai
   - DOMAIN-SUFFIX,pplx.ai
