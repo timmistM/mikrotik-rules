@@ -1,6 +1,7 @@
 # Discord Rules (including voice/stream server IPs)
 # Source: timmistM/mikrotik-rules
-# Voice IPs are critical — without them Discord streams have no audio
+# Voice/Stream IPs are critical — without them Discord streams have no audio/video
+# Updated: 2026-03-07 — added wide Google Cloud ranges for streaming
 
 payload:
   # ── Domains ─────────────────────────────────────────────────
@@ -11,8 +12,15 @@ payload:
   - DOMAIN-SUFFIX,discord.media
   - DOMAIN-SUFFIX,discordcdn.com
   - DOMAIN-SUFFIX,engage.cloudflareclient.com
+  - DOMAIN-SUFFIX,bc.googleusercontent.com
 
   # ── Voice / Stream server IPs ───────────────────────────────
-  - IP-CIDR,35.214.128.0/24,no-resolve
-  - IP-CIDR,104.29.153.0/24,no-resolve
-  - IP-CIDR,34.1.242.0/24,no-resolve
+  # Google Cloud — Discord uses random IPs across these ranges
+  - IP-CIDR,34.0.0.0/8,no-resolve
+  - IP-CIDR,35.192.0.0/12,no-resolve
+  # Cloudflare — Discord voice
+  - IP-CIDR,104.29.128.0/17,no-resolve
+  # Google Cloud — streaming media servers
+  - IP-CIDR,142.195.0.0/16,no-resolve
+  - IP-CIDR,113.156.0.0/16,no-resolve
+  - IP-CIDR,167.154.0.0/16,no-resolve
