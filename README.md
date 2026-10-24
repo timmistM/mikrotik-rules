@@ -1,29 +1,27 @@
 # mikrotik-rules
 
-Централизованные правила маршрутизации для Clash Verge и MikroTik.
+Свои списки правил для Clash Verge (клиенты на ПК). Крупные списки (YouTube, Google, Meta,
+Telegram, Discord, Roblox, Anthropic, OpenAI, Gemini) клиенты берут напрямую из
+[MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) — здесь только то,
+чего там нет или что нужно дополнительно.
 
 ## Структура
 
 ```
 mikrotik-rules/
-├── rules/                  # Правила для rule-providers
-│   ├── ai.yaml             # Claude, OpenAI, Gemini, Grok, Perplexity, Runway
-│   ├── discord.yaml        # Discord + голосовые серверы
-│   ├── telegram.yaml       # Telegram IP-диапазоны
-│   ├── youtube.yaml        # YouTube + Google Video
-│   ├── meta.yaml           # Facebook, Instagram, WhatsApp
-│   ├── gaming.yaml         # Roblox, Unity, ARVI Playtests
-│   └── other.yaml          # RuTracker, RustDesk, ProtonVPN, etc.
-├── warp/                   # Shared WARP конфигурация
-│   └── warp_proxies.yaml   # WARP-1, WARP-2, WARP-3
-├── scripts/                # Автоматизация MikroTik
-│   └── mikrotik_sync.rsc   # Скрипт синхронизации address-list
+├── rules/
+│   ├── ai.yaml          # Claude/Anthropic (домены и IP), OpenAI, Grok, Ideogram, Perplexity, Runway, Intercom
+│   ├── google_ai.yaml   # Gemini, AI Studio, NotebookLM, DeepMind
+│   ├── discord.yaml     # Discord + диапазоны голоса/стримов
+│   ├── telegram.yaml    # Telegram: домены и IP-диапазоны
+│   ├── youtube.yaml     # YouTube
+│   ├── meta.yaml        # Instagram, Facebook, WhatsApp
+│   ├── gaming.yaml      # Roblox, Unity Remote Config, ARVI Playtests
+│   └── other.yaml       # RuTracker, RustDesk, ProtonVPN, UPGEN SVN, Soundcore
 └── README.md
 ```
 
 ## Использование в Clash Verge
-
-### Rule-providers (в конфиге клиента)
 
 ```yaml
 rule-providers:
@@ -38,32 +36,16 @@ rules:
   - RULE-SET,ai-rules,🤖 AI
 ```
 
-### WARP proxy-provider
+Правила кешируются локально и обновляются по `interval` (секунды). На скорость не влияют:
+при открытии сайтов Clash смотрит в локальный кеш.
 
-```yaml
-proxy-providers:
-  warp:
-    type: http
-    url: https://raw.githubusercontent.com/timmistM/mikrotik-rules/main/warp/warp_proxies.yaml
-    path: ./providers/warp.yaml
-    interval: 86400
-    health-check:
-      enable: true
-      url: http://speed.cloudflare.com/
-      interval: 300
-```
+## WARP
 
-## Обновление
-
-Правила кешируются локально. Обновление происходит по `interval` (в секундах).
-Рекомендуемые значения:
-- `3600` (1 час) — для правил (rules)
-- `86400` (24 часа) — для WARP прокси
-
-**Скорость работы не страдает** — при загрузке сайтов Clash обращается к локальному кешу.
+WARP здесь больше не раздаётся: у каждого пользователя свои учётки в его приватном конфиге.
+Одна учётка WARP = одно устройство, иначе устройства выбивают друг друга.
 
 ## Добавление нового сервиса
 
-1. Добавить домены/IP в соответствующий файл в `rules/`
-2. Commit + Push
-3. Все клиенты подхватят при следующем обновлении по interval
+1. Добавить домены/IP в нужный файл в `rules/`.
+2. Commit + Push.
+3. Клиенты подхватят при следующем обновлении (до часа).
