@@ -1,10 +1,10 @@
-# AI Services Rules
+# Google AI Rules (Gemini, AI Studio, NotebookLM, DeepMind)
 # Source: timmistM/mikrotik-rules
-# Used by: Clash Verge clients (rule-provider) + MikroTik sync script
-# Update: add new AI service domains/IPs here — all clients pick up automatically
+# Used by: Clash Verge clients (rule-provider), group "🧠 Google AI"
+# Must come BEFORE the general Google list in client rules, otherwise Gemini goes with Google
 
 payload:
-     # ── Google AI (Gemini, DeepMind, NotebookLM, AI Studio) ────
+  # ── Google AI (Gemini, DeepMind, NotebookLM, AI Studio) ────
   - DOMAIN-SUFFIX,gemini.google.com
   - DOMAIN-SUFFIX,aistudio.google.com
   - DOMAIN-SUFFIX,generativelanguage.googleapis.com
